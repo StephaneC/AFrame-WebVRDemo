@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, WebVR! - A-Frame</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Hello, WebVR! - A-Frame">
+    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="./components/vidplayer.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- set user start position -->
+      <!--<a-entity camera="userHeight: 1.6" position="0 0 5" look-controls></a-entity>-->
+
+      
+      <!--<a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>-->
+      <!--<a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>-->
+      
+       <!-- declare asset to use asset management system. -->
+       <a-assets>
+        <img id="logo" src="https://s-media-cache-ak0.pinimg.com/originals/a3/40/ce/a340ce89e0298e52c438ae79591e3284.jpg">
+        <img id="banner1" src="https://s-media-cache-ak0.pinimg.com/736x/57/11/5f/57115f156e7360862c95b34827c55514--id-branding-vans-logo.jpg">
+        <img id="banner2" src="https://s-media-cache-ak0.pinimg.com/736x/57/11/5f/57115f156e7360862c95b34827c55514--id-branding-vans-logo.jpg">
+         
+      </a-assets>
+       
+            <!-- Basic circle. block-->
+      <a-circle rotation="-90 20 0" position="-8 0 -10" radius="5" color="#ff6764">
+        <!-- header -->
+        <a-entity rotation="90 0 0" 
+                  position="0 0 5"
+          geometry="primitive: plane; width: 4; height: 1.5"
+          material="color: white">
+          <a-text  position="-1.75 0 0" scale="2 1.5 2" value="Space 1" color="#ad0012" font="kelsonsans" side="double"></a-text>
+        </a-entity>
+        <!-- eache cylinder is an account -->
+        <a-cylinder position="-3.25 -1.5 2" rotation="90 0 0" radius="0.5" height="4" color="#E72D39"                    
+                event-set__enter="_event: mouseenter; _target: #details0; visible: true"
+           event-set__leave="_event: mouseleave; _target: #details0; visible: false">
+          <a-text position="-0.75 3.5 0" value="Value 1" color="#ad0012" side="double"></a-text>  
+          <a-text id="details0" value="details 1" align="center" color="#FFF" visible="false" position="0 -0.55 0.55"
+                geometry="primitive: plane; width: 2" material="color: #333"></a-text>
+        </a-cylinder>
+        
+        <a-cylinder position="0.5 -1.5 0" rotation="90 0 0" radius="0.5" height="1" color="#E72D39"                    
+                event-set__enter="_event: mouseenter; _target: #details1; visible: true"
+                event-set__leave="_event: mouseleave; _target: #details1; visible: false">
+          <a-text position="-0.75 1 0" value="Value 2" color="#ad0012" side="double"></a-text>
+          <a-text id="details1" value="Details 2e" align="center" color="#FFF" visible="false" position="0 -0.55 0.55"
+                geometry="primitive: plane; width: 2.2" material="color: #333"></a-text>
+        </a-cylinder>
+        
+        <a-cylinder position="3.25 -1.5 3" rotation="90 0 0" radius="0.5" height="6" color="#00829E"                    
+                event-set__enter="_event: mouseenter; _target: #details2; visible: true"
+                event-set__leave="_event: mouseleave; _target: #details2; visible: false">
+          <a-text position="-0.5 3.5 0" value="Value 3" color="#005570" side="double"></a-text> 
+          <a-text id="details2" value="Details 3" align="center" color="#FFF" visible="false" position="0 -0.55 0.55"
+                geometry="primitive: plane; width: 2" material="color: #333"></a-text>
+        </a-cylinder>
+      </a-circle>
+      
+            <!-- Basic circle. block-->
+      <a-circle rotation="-90 -20 0" position="8 0 -10" radius="5" color="#95af40">
+        <!-- header -->
+        <a-entity rotation="90 0 0" 
+                  position="0 0 5"
+          geometry="primitive: plane; width: 5; height: 1.5"
+          material="color: white">
+          <a-text  position="-2.4 0 0" scale="2 1.5 2" value="Space 2" color="#ad0012" font="kelsonsans" side="double"></a-text>
+        </a-entity>
+        <a-cylinder position="-3.25 -1.5 3" rotation="90 0 0" radius="0.5" height="6" color="#648009"
+                event-set__enter="_event: mouseenter; _target: #credit0; visible: true"
+                event-set__leave="_event: mouseleave; _target: #credit0; visible: false">
+          <a-text position="-0.75 3.5 0" value="D1" color="#365300" side="double"></a-text> 
+          <a-text id="credit0" value="Details 1" align="center" color="#FFF" visible="false" position="0 -0.55 0.55"
+                geometry="primitive: plane; width: 2" material="color: #333"></a-text>
+        </a-cylinder>
+        <a-cylinder position="0 -0.5 0.5" rotation="90 0 0" radius="0.5" height="0.5" color="#648009"
+                event-set__enter="_event: mouseenter; _target: #credit1; visible: true"
+                event-set__leave="_event: mouseleave; _target: #credit1; visible: false">
+          <a-text position="-0.75 1 0" value="D2" color="#365300" side="double"></a-text>
+          <a-text id="credit1" value="Details 2" align="center" color="#FFF" visible="false" position="0 0 0.55"
+                geometry="primitive: plane; width: 2" material="color: #333"></a-text>
+
+        </a-cylinder>
+      </a-circle> 
+      
+      <a-entity obj-model="obj: #speaker-obj; mtl: #speaker-mtl;"></a-entity>
+
+      
+            
+      <!-- Services part-->
+      <a-plane rotation="-90 0 0" position="0 0 -25" width="10" height="10" color="#544431">
+        <!-- header -->
+        <a-entity rotation="90 0 0" 
+                  position="0 0 5" 
+          geometry="primitive: plane; width: 5; height: 1.5"
+          material="color: white">
+          <a-text  position="-2.4 0 0" scale="2 1.5 2" value="Text Test" color="#ad0012" font="kelsonsans" side="double"></a-text>
+        </a-entity>
+        <a-entity rotation="90 0 0" vid-player-hover>
+          <a-video src="#part-app" width="5" height="2.5" position="0 4 2"></a-video>
+        </a-entity>
+
+      </a-plane>     
+
+
+      <a-image src="#logo" width="5" height="2.5" position="0 8 -20"></a-image>
+      <!-- adding add on left wall -->
+      <a-image src="#banner1" width="20" height="10" rotation="0 90 0" position="-50 3 20"></a-image>
+      <!-- adding add on right wall -->
+      <a-image src="#banner2" width="20" height="10" rotation="0 -90 0" position="50 3 20"></a-image>
+
+
+      <a-plane position="-1 -1 -4" rotation="-90 0 0" width="70" height="55" color="#7BC8A4"></a-plane>
+      <!--<a-plane position="-1 -1 -4" rotation="-90 0 0" width="100" height="100" color="#838489"></a-plane>-->
+      <a-sky color="#ECECEC"></a-sky>
+      <!--<a-sky color="#838489"></a-sky>-->
+      <!--<a-entity position="0 2 3.7">
+        <a-entity camera look-controls wasd-controls>
+                <a-entity position="0 0 -3"
+                geometry="primitive: ring; radiusOuter: 0.30;
+                          radiusInner: 0.20;"
+                material="color: cyan; shader: flat"
+                cursor="maxDistance: 10; fuse: true">
+            <a-animation begin="click" easing="ease-in" attribute="scale"
+                 fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
+            <a-animation begin="fusing" easing="ease-in" attribute="scale"
+                 fill="forwards" from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
+          </a-entity>
+        </a-entity>
+      </a-entity>-->
+            <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-scene>
+  </body>
+</html>
